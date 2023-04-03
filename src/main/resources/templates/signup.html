@@ -4,10 +4,18 @@
 <body>
 
 <main role="main">
-  <div class="container">
+  <div class="container my-5">
+    <div>
+      <a href="#" th:href="@{'/sign-up?lang=us'}">US</a>
+      <a href="#" th:href="@{'/sign-up?lang=ja'}">Japan</a>
+      <a href="#" th:href="@{'/sign-up?lang=fr'}">France</a>
+      <a href="#" th:href="@{'/sign-up?lang=de'}">German</a>
+      <a href="#" th:href="@{'/sign-up?lang=my'}">Myanmar</a>
+    </div>
+
     <form th:action="@{/register}" th:object="${user}" method="post">
       <div class="form-group">
-        <label for="username">UserName</label>
+        <label for="username" th:text="#{user.name}"></label>
         <input type="text" id="username" class="form-control" th:classappend="${#fields.hasErrors('userName')}? 'is-invalid'"
                th:field="*{userName}">
         <small th:if="${#fields.hasErrors('userName')}" class="invalid-feedback" th:errors="*{userName}"></small>

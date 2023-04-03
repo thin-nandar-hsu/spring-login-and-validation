@@ -17,7 +17,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @NamedNotAdmin(message = "Name can't be Admin! ")
+    @NamedNotAdmin(message = "{validator.msg.user}")
     @Column(unique = true,name = "username")
     private String userName;
     private String password;
