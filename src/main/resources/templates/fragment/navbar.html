@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+
+<body>
+<nav th:fragment="navbar" class="navbar navbar-expand-md navbar-dark text-light" style="background-color:#7abaff">
+  <a th:href="@{/}" class="navbar-brand">Home</a>
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item">
+      <a href="#" class="nav-link">Home</a>
+    </li>
+    <li class="nav-item">
+      <a th:href="@{/products}" class="nav-link">Product</a>
+    </li>
+  </ul>
+  <div sec:authorize="!isAuthenticated()">
+    <a th:href="@{/sign-up}" class="btn-link mr-3 text-light">Sign Up</a>
+    <a th:href="@{/login}" class="btn-link text-light">Login In</a>
+  </div>
+
+  <div sec:authorize="isAuthenticated()">
+    <a href="javascript: document.logoutForm.submit()">Log Out</a>
+
+    <form name="logoutForm" th:action="@{/logout}" method="post" th:hidden="true">
+      <input hidden type="submit" value="SignOut">
+    </form>
+  </div>
+</nav>
+
+</body>
+</html>
